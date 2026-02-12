@@ -22,8 +22,15 @@ h1 {
 
 #message {
     font-size: 20px;
-    height: 50px;
+    min-height: 60px;
     color: #cc0066;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+/* Contenedor de botones */
+#buttons {
+    margin-top: 40px;
 }
 
 button {
@@ -31,7 +38,7 @@ button {
     font-size: 18px;
     border-radius: 12px;
     border: none;
-    margin: 10px;
+    margin: 15px;
     transition: all 0.3s ease;
 }
 
@@ -53,8 +60,10 @@ button {
 <h1>¿Quieres ser mi San Valentín? 💘</h1>
 <div id="message"></div>
 
-<button id="yes" onclick="yesClicked()">Sí 💕</button>
-<button id="no">No 😈</button>
+<div id="buttons">
+    <button id="yes" onclick="yesClicked()">Sí 💕</button>
+    <button id="no">No 😈</button>
+</div>
 
 <!-- Música Lo-Fi -->
 <audio id="music" autoplay loop>
@@ -98,25 +107,20 @@ noBtn.addEventListener("click", function(e) {
         message.innerText = messages[attempts - 1];
     }
 
-    // Idea divertida 1
     if (attempts === 6) {
         message.innerText = "Estoy empezando a sospechar que no sabes usar esta web...";
     }
 
-    // Idea divertida 2
     if (attempts === 7) {
         message.innerText = "El botón 'Sí' está justo al lado eh 👀";
     }
 
-    // El botón Sí crece progresivamente
     yesBtn.style.transform = "scale(" + (1 + attempts * 0.15) + ")";
 
-    // A partir de cierto punto el botón No huye
     if (attempts >= 5) {
         moveButton();
     }
 
-    // Final mejorado
     if (attempts >= 8) {
         document.body.innerHTML = `
             <h1>💔 Has roto el sistema.</h1>
@@ -124,20 +128,5 @@ noBtn.addEventListener("click", function(e) {
             <p>Reiniciando encanto en 3... 2... 1... 😎</p>
             <button onclick="location.reload()">Vale, otra vez 😂</button>
         `;
-    }
 
-});
-
-function yesClicked() {
-    document.body.innerHTML = `
-        <h1>Sabía que dirías que sí 😎💘</h1>
-        <h2>Prepárate para la mejor cita de tu vida ❤️</h2>
-        <p>(La música lo-fi sigue porque esto ya es cine romántico)</p>
-    `;
-}
-
-</script>
-
-</body>
-</html>
 
